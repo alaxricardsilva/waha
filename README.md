@@ -9,7 +9,7 @@ Este repositório contém um stack Docker mínimo para rodar o **WAHA (WhatsApp 
 ## Visão geral da arquitetura
 
 - `waha`  
-  Container com a imagem oficial do WAHA (`devlikepro/whatsapp-http-api`), expondo uma API HTTP para controlar sessões de WhatsApp.
+  Container com a imagem oficial do WAHA (`devlikeapro/waha:latest-2025.12.1`), expondo uma API HTTP para controlar sessões de WhatsApp.
 
 - `redis`  
   Usado pelo WAHA para processar jobs dos Apps (Chatwoot, Calls, etc.).
@@ -253,4 +253,3 @@ A partir desse ponto:
 - Nunca commite tokens reais, senhas ou dados sensíveis em repositórios públicos.
 - Use um `.env` com valores fictícios no repositório e mantenha o `.env` real apenas no servidor.
 - Se utilizar tokens em URLs de Git (para automação), prefira tokens de escopo restrito e substitua-os sempre que necessário.
-
