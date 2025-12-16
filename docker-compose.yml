@@ -1,8 +1,6 @@
-version: "3.8"
-
 services:
   waha:
-    image: devlikepro/whatsapp-http-api:latest
+    image: devlikeapro/waha:latest-2025.12.1
     container_name: waha
     restart: unless-stopped
     env_file:
@@ -27,4 +25,3 @@ networks:
 
 volumes:
   waha_redis_data:
-
