@@ -71,6 +71,9 @@ WAHA_APPS_ON=chatwoot,calls
 REDIS_URL=redis://redis:6379
 WHATSAPP_DEFAULT_ENGINE=GOWS
 WAHA_API_KEY_PLAIN=troque_esta_senha_forte
+WAHA_DASHBOARD_ENABLED=true
+WAHA_DASHBOARD_USERNAME=admin
+WAHA_DASHBOARD_PASSWORD=admin123
 ```
 
 - `WAHA_BASE_URL`  
@@ -90,6 +93,9 @@ WAHA_API_KEY_PLAIN=troque_esta_senha_forte
 
 - `WAHA_API_KEY_PLAIN`  
   Senha em texto usada por alguns Apps. Use um valor forte em produção.
+
+- `WAHA_DASHBOARD_ENABLED`, `WAHA_DASHBOARD_USERNAME`, `WAHA_DASHBOARD_PASSWORD`  
+  Controlam o login no Dashboard Web do WAHA. No exemplo, o usuário é `admin` e a senha `admin123`. Em produção, altere para credenciais fortes.
 
 ### 2. Chatwoot
 
