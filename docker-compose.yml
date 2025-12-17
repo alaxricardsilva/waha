@@ -1,6 +1,6 @@
 services:
   waha:
-    image: devlikeapro/waha:latest-2025.12.1
+    image: devlikeapro/waha:latest-2025.12.2
     container_name: waha
     restart: unless-stopped
     env_file:
