@@ -9,12 +9,28 @@ services:
       - redis
     networks:
       - waha_net
+      - dokploy-network
+    labels:
+      - traefik.docker.network=dokploy-network
+      - traefik.enable=true
+      # HTTP Router (com redirecionamento para HTTPS)
+      - traefik.http.routers.waha-api-whatsapp-waha-qk33xs-11-web.rule=Host(`waha.ricardtech.top`)
+      - traefik.http.routers.waha-api-whatsapp-waha-qk33xs-11-web.entrypoints=web
+      - traefik.http.routers.waha-api-whatsapp-waha-qk33xs-11-web.middlewares=redirect-to-https@file
+      - traefik.http.routers.waha-api-whatsapp-waha-qk33xs-11-web.service=waha-api-whatsapp-waha-qk33xs-11-web
+      - traefik.http.services.waha-api-whatsapp-waha-qk33xs-11-web.loadbalancer.server.port=3000
+      # HTTPS Router (websecure)
+      - traefik.http.routers.waha-api-whatsapp-waha-qk33xs-11-websecure.rule=Host(`waha.ricardtech.top`)
+      - traefik.http.routers.waha-api-whatsapp-waha-qk33xs-11-websecure.entrypoints=websecure
+      - traefik.http.routers.waha-api-whatsapp-waha-qk33xs-11-websecure.tls.certresolver=letsencrypt
+      - traefik.http.routers.waha-api-whatsapp-waha-qk33xs-11-websecure.service=waha-api-whatsapp-waha-qk33xs-11-websecure
+      - traefik.http.services.waha-api-whatsapp-waha-qk33xs-11-websecure.loadbalancer.server.port=3000
 
   redis:
     image: redis:7-alpine
     container_name: waha-redis
     restart: unless-stopped
-    command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
+    command: [ "redis-server", "--save", "60", "1", "--loglevel", "warning" ]
     volumes:
       - waha_redis_data:/data
     networks:
@@ -22,6 +38,8 @@ services:
 
 networks:
   waha_net:
+  dokploy-network:
+    external: true
 
 volumes:
   waha_redis_data:
